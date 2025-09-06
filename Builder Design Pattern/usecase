@@ -1,0 +1,4 @@
+Problem
+- You need a configuration object for connecting to different databases.
+- Each DB type has optional settings (SSL, timeout, retries, pool size, etc.).
+- Config must be immutable once built, so client code can safely use it without someone accidentally changing it later.
