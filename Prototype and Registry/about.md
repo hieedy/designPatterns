@@ -35,3 +35,32 @@ The **Prototype Registry** provides an easy way to access frequently-used protot
 
 - Use this patten when client code should not depend on the concrete classes of objects that they need to copy. 
 - Use this when you want to reduce the number of *subclasses* that only differ in the way they initialize their respective objects. Example: ClassMate notebooks of same size(height and width) and price are only different with their front page design and the design of the back page. So if we need to create a 1000 copies and we know only very few attributes are gonna change then creating a prototype and clonning it and modifying that few attributes(front and back in our case) would make more sense instead of *reinitializing an object every time OR creating different different classes with those default values*.
+
+```mermaid
+classDiagram
+    class Person {
+        +String name
+        +int age
+        +void greet()
+    }
+    class Student {
+        +String studentId
+        +String major
+        +void study()
+    }
+    class Professor {
+        +String facultyId
+        +String department
+        +void teach()
+    }
+
+    Person <|-- Student
+    Person <|-- Professor
+
+    Student "1" -- "*" Course : enrolls in
+    Professor "1" -- "*" Course : teaches
+    class Course {
+        +String courseCode
+        +String title
+        +int credits
+    }
